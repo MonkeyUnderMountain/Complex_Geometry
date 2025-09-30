@@ -1,1 +1,156 @@
-\section{}
+\section{Complex Manifolds}
+
+\subsection{Definition and Examples}
+
+    \begin{definition}\label{def:complex_manifold}
+        A \emph{complex manifold} of complex dimension \(n\) is a topological space \(M\) such that
+        \begin{enumerate}
+            \item \(M\) is Hausdorff and second countable;
+            \item \(M\) is locally homeomorphic to \(\bbC^n\), i.e., for every point \(p\in M\), there exists an open neighborhood \(U\) of \(p\) and a homeomorphism \(\varphi: U\to V\subset \bbC^n\), where \(V\) is an open subset of \(\bbC^n\),
+                The pair \((U,\varphi)\) is called a \emph{chart};
+            \item if \((U,\varphi)\) and \((U',\varphi')\) are two charts with \(U\cap U'\neq \emptyset\), then the transition map
+                \[
+                    \varphi'\circ \varphi^{-1}: \varphi(U\cap U')\to \varphi'(U\cap U')
+                \]
+                is holomorphic.
+        \end{enumerate}
+        The collection of all charts \(\{(U_\alpha,\varphi_\alpha)\}\) that cover \(M\) is called an \emph{atlas}.
+        If the atlas is maximal, it is called a \emph{complex structure} on \(M\).
+    \end{definition}
+
+    Another way to define complex manifolds is to use the language of ringed spaces.
+
+    \begin{definition}\label{def:complex_manifold_as_ringed_space}
+        A \emph{complex manifold} of complex dimension \(n\) is a ringed space \((M,\calO_M)\) such that
+        \begin{enumerate}
+            \item \(M\) is Hausdorff and second countable;
+            \item for every point \(p\in M\), there exists an open neighborhood \(U\) of \(p\) such that \((U,\calO_M|_U)\) is isomorphic to \((B,\calO_B)\), where \(B\) is the unit open ball in \(\bbC^n\) and \(\calO_B\) is the sheaf of holomorphic functions on \(B\).
+        \end{enumerate}
+    \end{definition}
+
+    \begin{question}\label{qs:existence_and_uniqueness_of_complex_structure}
+        Given a topological space \(M\) that is Hausdorff and second countable, when does it admit a complex structure?
+        Is such a complex structure unique?
+    \end{question}
+
+    For complex dimension \(1\), the answer is positive and well-known.
+    For higher dimensions, the answer is negative in general.
+    In particular, does the \(6\)-sphere \(S^6\) admit a complex structure?
+    This is a famous open problem in complex geometry.
+
+    \begin{question}\label{qs:complex_structure_on_S6}
+        Does the \(6\)-sphere \(S^6\) admit a complex structure?
+    \end{question}
+
+    \begin{definition}\label{def:holomorphic_map_between_complex_manifolds}
+        Let \(M\) and \(N\) be two complex manifolds.
+        A continuous map \(f: M\to N\) is called \emph{holomorphic} if for every point \(p\in M\), there exist charts \((U,\varphi)\) of \(M\) around \(p\) and \((V,\psi)\) of \(N\) around \(f(p)\) such that
+        \[
+            \psi\circ f\circ \varphi^{-1}: \varphi(U\cap f^{-1}(V))\to \psi(f(U)\cap V)
+        \]
+        is holomorphic.
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{definition}\label{def:submanifold_of_complex_manifold}
+        Let \(M\) be a complex manifold of complex dimension \(n\).
+        A subset \(S\subset M\) is called a \emph{complex submanifold} of complex dimension \(k\) if for every point \(p\in S\), there exist a chart \((U,\varphi)\) of \(M\) around \(p\) such that
+        \[
+            \varphi(U\cap S) = \varphi(U)\cap (\bbC^k\times \{0\}) \subset \bbC^n,
+        \]
+        where we identify \(\bbC^n\) with \(\bbC^k\times \bbC^{n-k}\).
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{example}\label{eg:complex_vector_space_as_complex_manifold}
+        Any complex vector space \(V\) of complex dimension \(n\) is a complex manifold of complex dimension \(n\).        
+    \end{example}
+
+    \begin{example}\label{eg:complex_manifold_by_holomorphic_implicit_function_theorem}
+        Let \(f: \bbC^{n+m}\to \bbC^m\) be a holomorphic function.
+        Suppose that \(0\) is a regular value of \(f\), i.e., the Jacobian matrix \(Df_p\) is surjective for every \(p\in f^{-1}(0)\).
+        Then by the holomorphic implicit function theorem (\cref{thm:holomorphic_implicit_function_theorem}),
+        for every point \(p\in f^{-1}(0)\), there exist open neighborhoods \(U\) of \(p\) and \(V\) of \(0\) such that \(f^{-1}(0)\cap U\) is biholomorphic to an open subset of \(\bbC^n\).
+        Thus \(f^{-1}(0)\) is a complex manifold of complex dimension \(n\).
+        % the preimage \(f^{-1}(0)\) is a complex manifold of complex dimension \(n\).
+        In particular, any non-singular complex algebraic variety is a complex manifold.
+        \Yang{To be continued...}
+    \end{example}
+
+    \begin{example}\label{eg:complex_projective_space_as_complex_manifold}
+        The complex projective space \(\bbC\bbP^n:= \bbC^{n+1}\setminus \{0\}/\bbC^\times\) is a complex manifold of complex dimension \(n\).
+        In fact, \(\bbC\bbP^n\) can be covered by \(n+1\) charts, each of which is biholomorphic to \(\bbC^n\).
+        For example, the chart \(U_0 = \{[z_0: z_1: \cdots: z_n]\in \bbC\bbP^n: z_0\neq 0\}\) is biholomorphic to \(\bbC^n\) via the map
+        \[
+            [z_0: z_1: \cdots: z_n] \mapsto \left(\frac{z_1}{z_0}, \frac{z_2}{z_0}, \ldots, \frac{z_n}{z_0}\right).
+        \]
+        The other charts are defined similarly.
+    \end{example}
+
+    \begin{proposition}\label{prop:zero_locus_of_homogeneous_polynomial_in_CPn}
+        Let \(f:\bbC^{n+1}\setminus \{0\} \to \bbC\) be a homogeneous polynomial of degree \(d\) such that \(0\) is a regular value of \(f\).
+        Then \(f^{-1}(0)/\bbC^\times\) is a complex submanifold of \(\bbC\bbP^n\) of complex dimension \(n-1\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+\subsection{Almost Complex Structures}
+
+    Let \(X\) be a complex manifold of complex dimension \(n\).
+    The tangent bundle \(TX\) is a real vector bundle of rank \(2n\).
+    There is a natural endomorphism \(J: TX\to TX\) induced by the complex structure of \(X\), i.e., for every point \(p\in X\), \(J_p: T_pX\to T_pX\) is the multiplication by \(\im\).
+    We have \(J^2 = -\id\).
+
+    \begin{definition}\label{def:almost_complex_structure}
+        Let \(M\) be a smooth manifold of real dimension \(2n\).
+        An \emph{almost complex structure} on \(M\) is a smooth endomorphism \(J: TM\to TM\) such that \(J^2 = -\id\).
+        The pair \((M,J)\) is called an \emph{almost complex manifold}.
+    \end{definition}
+
+    \begin{definition}\label{def:J_holomorphic_function}
+        Let \((M,J)\) be an almost complex manifold.
+        A smooth function \(f: M\to \bbC\) is called \emph{\(J\)-holomorphic} if
+        \[ \upd f \circ J = \im \cdot \upd f. \]
+    \end{definition}
+
+    \begin{question}\label{qs:existence_of_almost_complex_structure}
+        Given a smooth manifold \(M\) of real dimension \(2n\), when does it admit an almost complex structure?
+        Is such an almost complex structure unique?
+    \end{question}
+
+    \Yang{Giving an almost complex structure \(J\) on a smooth manifold \(M\) is equivalent to giving \(M\) a \(\GL(n,\bbC)\)-structure.}
+    The existence of almost complex structures is a purely topological problem.
+
+% \subsection{The exterior differential and the Nijenhuis tensor}
+
+    Let \((M,J)\) be an almost complex manifold.
+    Then the complexified tangent bundle \(T_\bbC M := TM \otimes_\bbR \bbC\) splits into the direct sum of two complex subbundles
+    \[ T_\bbC M = T^{1,0}M \oplus T^{0,1}M, \]
+    where 
+    \[ T^{1,0}M := \ker (\im \id - J), \quad T^{0,1}M := \ker (\im \id + J). \]
+    We have \(\overline{T^{1,0}M} = T^{0,1}M\) and both \(T^{1,0}M\) and \(T^{0,1}M\) are complex vector bundles of rank \(n\).
+    This decomposition induces a decomposition of the complexified cotangent bundle
+    \Yang{To be continued...}
+
+    \begin{proposition}\label{prop:decomposition_of_differential_operator}
+        There exist differential operators
+        \[ \P: \Omega^{p,q}(M) \to \Omega^{p+1,q}(M), \quad \mu: \Omega^{p,q}(M) \to \Omega^{p+2,q-1}(M) \]
+        such that
+        \[ \upd = \P + \overline{\P} + \mu + \overline{\mu}. \]
+    \end{proposition}
+
+    In a diagram:
+
+
+    \begin{proof}[Proof of \cref{prop:decomposition_of_differential_operator}]
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{proposition}\label{prop:properties_of_differential_operators}
+        The operators \(\P\) and \(\mu\) satisfy the following properties:
+        \begin{enumerate}
+            \item 
+        \end{enumerate}
+        \Yang{To be continued...}
+    \end{proposition}
