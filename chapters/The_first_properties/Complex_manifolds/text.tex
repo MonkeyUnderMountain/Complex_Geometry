@@ -21,7 +21,7 @@
     Another way to define complex manifolds is to use the language of ringed spaces.
 
     \begin{definition}\label{def:complex_manifold_as_ringed_space}
-        A \emph{complex manifold} of complex dimension \(n\) is a ringed space \((M,\calO_M)\) such that
+        A \emph{complex manifold} of complex dimension \(n\) is a locally ringed space \((M,\calO_M)\) such that
         \begin{enumerate}
             \item \(M\) is Hausdorff and second countable;
             \item for every point \(p\in M\), there exists an open neighborhood \(U\) of \(p\) such that \((U,\calO_M|_U)\) is isomorphic to \((B,\calO_B)\), where \(B\) is the unit open ball in \(\bbC^n\) and \(\calO_B\) is the sheaf of holomorphic functions on \(B\).
@@ -95,6 +95,16 @@
         \Yang{To be continued...}
     \end{proof}
 
+    \begin{example}\label{eg:hopf_manifolds}
+        The Hopf manifolds are a class of complex manifolds that can be constructed as quotients of complex vector spaces by the action of a group of automorphisms.
+        \Yang{To be continued...}
+    \end{example}
+
+    \begin{example}\label{eg:Iwasawa_manifold}
+        The Iwasawa manifold is a complex manifold that can be constructed as a quotient of the complex Heisenberg group by a discrete subgroup.
+        \Yang{To be continued...}
+    \end{example}
+
 \subsection{Almost Complex Structures}
 
     Let \(X\) be a complex manifold of complex dimension \(n\).
@@ -119,14 +129,31 @@
         Is such an almost complex structure unique?
     \end{question}
 
-    \Yang{Giving an almost complex structure \(J\) on a smooth manifold \(M\) is equivalent to giving \(M\) a \(\GL(n,\bbC)\)-structure.}
-    The existence of almost complex structures is a purely topological problem.
+    Giving an almost complex structure \(J\) on a smooth manifold \(M\) is equivalent to giving the tangent bundle \(TM\) the structure of a complex vector bundle.
+    Hence the existence of almost complex structures is a purely topological problem.
+    Note that to find a complex structure on \(M\) needs to solve some non-linear partial differential equations, which is much harder.
+
+    \begin{example}\label{eg:almost_complex_structure_on_S6}
+        The \(6\)-sphere \(S^6\) admits an almost complex structure.
+        In fact, \(S^6\) can be identified with the unit sphere in the imaginary octonions \(\Image \bbO\).
+        Denote by \(m(x,y)\) the octonionic multiplication of \(x,y\in \bbO\).
+        For every point \(p\in S^6\), the tangent space \(T_pS^6\) can be identified with the orthogonal complement of \(\bbR p\) in \(\Im \bbO\).
+        Define \(J_p: T_pS^6 \to T_pS^6\) by \(J_p(v) = m(p,v)\).
+        Then \(J_p^2(v) = p(pv) = -v\) for every \(v\in T_pS^6\).
+        Thus we get an almost complex structure on \(S^6\).
+        \Yang{To be continued...}
+    \end{example}
+    \begin{remark}\label{rmk:fundamental_facts_about_octonion_for_almost_complex_structure_on_S6}
+        Recall some fundamental facts about the octonions \(\bbO\):
+
+        \Yang{To be continued...}
+    \end{remark}
 
 % \subsection{The exterior differential and the Nijenhuis tensor}
 
     Let \((M,J)\) be an almost complex manifold.
-    Then the complexified tangent bundle \(T_\bbC M := TM \otimes_\bbR \bbC\) splits into the direct sum of two complex subbundles
-    \[ T_\bbC M = T^{1,0}M \oplus T^{0,1}M, \]
+    Then the complexified tangent bundle \(TM_\bbC  := TM \otimes_\bbR \bbC\) splits into the direct sum of two complex subbundles
+    \[ T M_\bbC = T^{1,0}M \oplus T^{0,1}M, \]
     where 
     \[ T^{1,0}M := \ker (\im \id - J), \quad T^{0,1}M := \ker (\im \id + J). \]
     We have \(\overline{T^{1,0}M} = T^{0,1}M\) and both \(T^{1,0}M\) and \(T^{0,1}M\) are complex vector bundles of rank \(n\).
