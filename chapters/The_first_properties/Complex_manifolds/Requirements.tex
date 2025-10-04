@@ -1,6 +1,8 @@
 \section{Requirements}
 
-\begin{theorem}[Holomorphic implicit function theorem]\label{thm:holomorphic_implicit_function_theorem}
-    Let \(f: \bbC^{n+m} \to \bbC^m\) be a holomorphic function. If the Jacobian determinant \(\det(\P f/\P w)\) is nonzero at \((z_0, w_0) \in \bbC^{n+m}\), then there exist open neighborhoods \(U\) of \(z_0\) and \(V\) of \(w_0\), and a unique holomorphic function \(g: U \to V\) such that for any \((z, w) \in U \times V\), \(f(z, w) = f(z_0, w_0)\) if and only if \(w = g(z)\).
-    \Yang{To be continued...}
-\end{theorem}
+    \begin{theorem}[Holomorphic Implicit Function Theorem]\label{thm:holomorphic_implicit_function_theorem}
+        Let \(f: \bbC^{n+m} \to \bbC^m\) be a holomorphic map. 
+        Write the coordinates of \(\bbC^{n+m}\) as \((z,w) = (z_1, \ldots, z_n, w_1, \ldots, w_m) \in \bbC^n \times \bbC^m\).
+        If \(\det(\partial f/\partial w) \neq 0\) at \((z_0, w_0) \in \bbC^{n+m}\) with \(f(z_0, w_0) = 0\),
+        then there exist open neighborhoods \(U\) of \(z_0\) and \(V\) of \(w_0\), and a unique holomorphic map \(g: U \to V\) such that for any \((z, w) \in U \times V\), \(f(z, w) = 0\) if and only if \(w = g(z)\).
+    \end{theorem}
