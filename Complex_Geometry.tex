@@ -6,14 +6,14 @@
 \newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
-\title{}
+\title{Complex Geometry}
 \author{Tianle Yang}
 \date{\today}
 \authorpage{\href{https://www.tianleyang.com}{https://www.tianleyang.com}}
 
 % available on the mode "\sectionlevel=chapter" or "\sectionlevel=book".
 \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
-\coversentence{\CJKfamily{lxgwwenkai}“”}
+\coversentence{\CJKfamily{lxgwwenkai}“abaaba”}
 \coverimage{} % 封面图片
 \covertitlefont{Allura} % 封面标题字体, 若未安装，请去掉相关代码编译或使用其他字体
 % \coverlinecolor{red} % 封面线条颜色
@@ -21,7 +21,7 @@
 
 % available on the mode "\sectionlevel=book".
 \authoremail{\href{mailto:loveandjustice@88.com}{loveandjustice@88.com}}
-\texsource{\href{https://github.com/MonkeyUnderMountain/TexTemplates}{github.com/MonkeyUnderMountain/TexTemplates}}
+\texsource{\href{https://github.com/MonkeyUnderMountain/Complex_Geometry}{github.com/MonkeyUnderMountain/Complex\_Geometry}}
 \version{0.1.0}
 
 
@@ -29,10 +29,15 @@
 
     \maketitle
 
+    \frontmatter % 前言页码罗马数字
+
     \tableofcontents % 生成目录
 
-    % \chapter{}
-    %    \input{}
+    \mainmatter % 正文页码阿拉伯数字
+
+    \chapter{The first properties}
+        \input{chapters/The_first_properties/Analysis_in_several_complex_variables/text.tex}
+        \input{chapters/The_first_properties/Complex_manifolds/text.tex}
 
     % \chapter{}
 
@@ -40,6 +45,6 @@
 
     % \chapter{}
 
-    \printbibliography[heading=bibintoc, title={References}] % 打印参考文献
+    % \printbibliography[heading=bibintoc, title={References}] % 打印参考文献
 
 \end{document}
