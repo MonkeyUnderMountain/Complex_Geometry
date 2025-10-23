@@ -1,0 +1,30 @@
+\section{Holomorphic bundles}
+
+    \begin{definition}\label{def:holomorphic_bundles}
+        Let \(E\xrightarrow{\pi} X\) be a complex vector bundle over a complex manifold \(X\). 
+        We say \(E\) is a \emph{holomorphic vector bundle} if there exists an open cover \(\{U_\alpha\}\) of \(X\) and holomorphic trivializations 
+        \[
+            \phi_\alpha: \pi^{-1}(U_\alpha) \xrightarrow{\sim} U_\alpha \times \mathbb{C}^n
+        \]
+        such that the transition maps
+        \[
+            \phi_\beta \circ \phi_\alpha^{-1}: U_\alpha \cap U_\beta \times \mathbb{C}^n \xrightarrow{} U_\alpha \cap U_\beta \times \mathbb{C}^n
+        \]
+        are holomorphic for all \(\alpha, \beta\).
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{example}\label{eg:holomorphic_tangent_bundle_as_holomorphic_bundle}
+        The holomorphic tangent bundle \(T^{1,0}X\) of a complex manifold \(X\) is a holomorphic vector bundle.
+    \end{example}
+
+    \begin{proposition}\label{prop:the_sum_tensor_dual_of_hol_bdls_are_hol_bdls}
+        Let \(E, F \xrightarrow{\pi} X\) be holomorphic vector bundles over a complex manifold \(X\). 
+        Then the following bundles are also holomorphic vector bundles:
+        \begin{enumerate}
+            \item The direct sum bundle \(E \oplus F\).
+            \item The tensor product bundle \(E \otimes F\).
+            \item The dual bundle \(E^*\).
+        \end{enumerate}
+        \Yang{To be completed.}
+    \end{proposition}
