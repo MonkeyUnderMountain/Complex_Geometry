@@ -3,17 +3,59 @@
 
 \subsection{Differential forms}
 
-
-
-\subsection{Various cohomology theories}
-
-Let \(M\) be a complex manifold.
+    Let \(M\) be a complex manifold.
+    
     Denote by \(\Omega_{\sm}^k(M)\) the space of smooth differential \(k\)-forms on \(M\) and by \(\Omega_{\sm}^{p,q}(M)\) the space of smooth \((p,q)\)-forms on \(M\).
     Then \(\Omega_{\sm}^k(M) = \bigoplus_{p+q=k} \Omega_{\sm}^{p,q}(M)\).
     Denote by \(\Omega_{\hol}^k(M)\) the space of holomorphic differential \(k\)-forms on \(M\).
     Then we have \(\Omega_{\sm}^{k,0}(M) = \Omega_{\hol}^k(M) \ten_{\calO_M^{\hol}} \calO_M^{\sm}\).
 
+    Recall that we have the exterior derivative
+    \[ \upd: \Omega_{\sm}^k(M) \to \Omega_{\sm}^{k+1}(M), \]
+    which can be decomposed as
+    \[ \upd = \partial + \overline{\partial}, \]
+    where 
+    \[ \partial: \Omega_{\sm}^{p,q}(M) \to \Omega_{\sm}^{p+1,q}(M), \quad \overline{\partial}: \Omega_{\sm}^{p,q}(M) \to \Omega_{\sm}^{p,q+1}(M). \]
+    In a diagram, we have:
+    \begin{center}
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes, column sep=2em, row sep=2em] {
+                \bullet & \bullet & \bullet & \bullet & \bullet \\
+                \bullet & \Omega^{p,q+1}  & \bullet & \bullet & \bullet \\
+                \bullet & \Omega^{p,q} & \Omega^{p+1,q} & \bullet & \bullet \\
+                \bullet & \bullet & \bullet & \bullet & \bullet \\
+                    &  &  & \Omega^{k} & \Omega^{k+1} \\
+                };
+                % Draw a horizontal line before the row containing \Omega^k (above row 5)
+                \draw (m-4-1.south) -- (m-4-5.south);
+                % Draw a dashed line passing through \Omega^{p-1,q+1} and \Omega^k
+                \draw[dashed] (m-2-1) -- (m-5-4);
+                \draw[dashed] (m-1-1) -- (m-5-5);
+                % Draw arrows for the operators
+                \draw[->] (m-3-2) -- (m-3-3) node[midway, above] {\(\partial\)};
+                \draw[->] (m-3-2) -- (m-2-2) node[midway, right] {\(\overline{\partial}\)};
+                % \draw[->] (m-3-2) -- (m-4-4) node[midway, right] {\(\mu\)};
+                % \draw[->] (m-3-2) -- (m-1-1) node[midway, above] {\(\overline{\mu}\)};
+                \draw[->] (m-5-4) -- (m-5-5) node[midway, above] {\(\upd\)};
+        \end{tikzpicture} 
+    \end{center}
+
+
+\subsection{Various cohomology theories}
+
+    % Let \(M\) be a complex manifold.
+    % Denote by \(\Omega_{\sm}^k(M)\) the space of smooth differential \(k\)-forms on \(M\) and by \(\Omega_{\sm}^{p,q}(M)\) the space of smooth \((p,q)\)-forms on \(M\).
+    % Then \(\Omega_{\sm}^k(M) = \bigoplus_{p+q=k} \Omega_{\sm}^{p,q}(M)\).
+    % Denote by \(\Omega_{\hol}^k(M)\) the space of holomorphic differential \(k\)-forms on \(M\).
+    % Then we have \(\Omega_{\sm}^{k,0}(M) = \Omega_{\hol}^k(M) \ten_{\calO_M^{\hol}} \calO_M^{\sm}\).
+
     There are several cohomology theories for complex manifolds.
+
+    \begin{definition}\label{def:singular_cohomology_on_complex_manifolds}
+        Let \(M\) be a complex manifold.
+        The \emph{singular cohomology} of \(M\) with coefficients in a ring \(R\) is defined to be the singular cohomology of the underlying topological space \(|M|\) of \(M\):
+        \[ H^k_{\sing}(M; R) := H^k_{\sing}(|M|; R). \]
+    \end{definition}
 
     \begin{definition}\label{def:de_rham_cohomology_of_complex_manifold}
         Let \(M\) be a complex manifold.
@@ -21,28 +63,30 @@ Let \(M\) be a complex manifold.
         \[ H^k_{\dR}(M) := \frac{\Ker(\upd: \Omega^k(M) \to \Omega^{k+1}(M))}{\Image(\upd: \Omega^{k-1}(M) \to \Omega^k(M))}. \]
     \end{definition}
 
+    \Yang{Smooth section or holomorphic section?}
+
     \begin{definition}\label{def:dolbeault_cohomology_of_complex_manifold}
         Let \(M\) be a complex manifold.
         The \emph{Dolbeault cohomology} of \(M\) is defined to be
         \[ H^{p,q}_{\overline{\partial}}(M) := \frac{\Ker(\overline{\partial}: \Omega^{p,q}(M) \to \Omega^{p,q+1}(M))}{\Image(\overline{\partial}: \Omega^{p,q-1}(M) \to \Omega^{p,q}(M))}. \]
     \end{definition}
 
-    \begin{definition}\label{def:Bott_Chern_cohomology_of_complex_manifold}
-        Let \(M\) be a complex manifold.
-        The \emph{Bott-Chern cohomology} of \(M\) is defined to be
-        \[ H^{p,q}_{\mathrm{BC}}(M) := \frac{\Ker(\upd: \Omega^{p,q}(M) \to \Omega^{p+1,q}(M) \oplus \Omega^{p,q+1}(M))}{\Image(\partial\overline{\partial}: \Omega^{p-1,q-1}(M) \to \Omega^{p,q}(M))}. \]
-        \Yang{To be checked...}
-    \end{definition}
+    % \begin{definition}\label{def:Bott_Chern_cohomology_of_complex_manifold}
+    %     Let \(M\) be a complex manifold.
+    %     The \emph{Bott-Chern cohomology} of \(M\) is defined to be
+    %     \[ H^{p,q}_{\mathrm{BC}}(M) := \frac{\Ker(\upd: \Omega^{p,q}(M) \to \Omega^{p+1,q}(M) \oplus \Omega^{p,q+1}(M))}{\Image(\partial\overline{\partial}: \Omega^{p-1,q-1}(M) \to \Omega^{p,q}(M))}. \]
+    %     \Yang{To be checked...}
+    % \end{definition}
 
-    \begin{definition}\label{def:Aeppli_cohomology_of_complex_manifold}
-        Let \(M\) be a complex manifold.
-        The \emph{Aeppli cohomology} of \(M\) is defined to be
-        \[ H^{p,q}_{\mathrm{A}}(M) := \frac{\Ker(\partial\overline{\partial}: \Omega^{p,q}(M) \to \Omega^{p+1,q+1}(M))}{\Image(\partial: \Omega^{p-1,q}(M) \to \Omega^{p,q}(M)) + \Image(\overline{\partial}: \Omega^{p,q-1}(M) \to \Omega^{p,q}(M))}. \]
-        \Yang{To be checked...}
-    \end{definition}
+    % \begin{definition}\label{def:Aeppli_cohomology_of_complex_manifold}
+    %     Let \(M\) be a complex manifold.
+    %     The \emph{Aeppli cohomology} of \(M\) is defined to be
+    %     \[ H^{p,q}_{\mathrm{A}}(M) := \frac{\Ker(\partial\overline{\partial}: \Omega^{p,q}(M) \to \Omega^{p+1,q+1}(M))}{\Image(\partial: \Omega^{p-1,q}(M) \to \Omega^{p,q}(M)) + \Image(\overline{\partial}: \Omega^{p,q-1}(M) \to \Omega^{p,q}(M))}. \]
+    %     \Yang{To be checked...}
+    % \end{definition}
 
-    There are natural maps between these cohomology theories.
-    \Yang{To be continued...}
+    % There are natural maps between these cohomology theories.
+    % \Yang{To be continued...}
 
     \begin{proposition}\label{prop:dolbeault_cohomology_of_polydisc}
         Let \(\Delta^n = \{(z_1, \ldots, z_n) \in \bbC^n: |z_i| < 1, i=1,\ldots,n\}\) be the unit polydisc in \(\bbC^n\).
