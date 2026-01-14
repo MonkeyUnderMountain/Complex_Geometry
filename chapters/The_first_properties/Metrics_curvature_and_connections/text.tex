@@ -1,0 +1,95 @@
+\section{Metrics, curvature and connections}
+
+% \Yang{we want discuss the following topics here: metric, forms, connection, curvature, Chern classes, K\"ahler condition, examples.}
+
+\subsection{The first properties}
+
+    Let \(X\) be a complex manifold and \(\calE \to X\) a holomorphic vector bundle. 
+
+    \begin{definition}\label{def:Hermitian_metric_on_holomorphic_vector_bundles}
+        % Let \(X\) be a complex manifold and \(E \to X\) a holomorphic vector bundle. 
+        A \emph{Hermitian metric} on \(\calE\) is a smoothly varying family of Hermitian inner products \(\langle \cdot, \cdot \rangle_x\) on the fibers \(\calE_x\) for each \(x \in X\),
+        i.e., 
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{example}\label{eg:Fubini-Study_metric_on_P^n}
+        Let \(\bbP^n\) be the complex projective space.
+        The \emph{Fubini-Study metric} \(h_{\text{FS}}\) is a Hermitian metric on its tangent bundle \(\calT \bbP^n\) defined as follows.
+        On the standard affine chart \(U_i = \{[z_0: \cdots : z_n] \in \bbP^n \mid z_i \neq 0\}\) with coordinates \(z_{j,i} = z_j/z_i\) for \(j \neq i\), 
+        we know that \(\calT \bbP^n|_{U_i}\) is spanned by \(\{\partial_{j,i} = \partial/\partial z_{j,i}\}_{j \neq i}\).
+        The Fubini-Study metric is given by
+        \[h_{\text{FS}}(z_{-,i})(\partial_k, \partial_l) = \frac{\delta_{kl}}{(1 + \sum_{r \neq i} |z_{r,i}|^2)} - \frac{\overline{z_{k,i}} z_{l,i}}{(1 + \sum_{r \neq i} |z_{r,i}|^2)^2}.\]
+
+        On \(U_{ij} = U_i \cap U_j\), the tangent vectors transform as
+        \[\partial_{k,j} = \begin{cases} z_{i,j} \partial_{k,i}, & k \neq i \\ -z_{k,j}^2 \partial_{i,i}, & k = i \end{cases}.\]
+        One can check that the above definition is consistent on the overlaps \(U_{ij}\),
+        \Yang{To be continued.}
+    \end{example}
+
+    \begin{example}\label{eg:Fubini-Study_metric_on_P^2}
+        Now let us consider the complex projective plane \(\bbP^2 = \{[X:Y:Z]\}\).
+        On the affine chart \(U_Z = \{[X:Y:Z] \mid Z \neq 0\}\) with coordinates \(x = X/Z\) and \(y = Y/Z\), 
+        the Fubini-Study metric \(h_{\text{FS}}\) on \(\calT \bbP^2|_{U_Z}\) is given by
+        \[ h_{\text{FS}}(x,y) = \frac{1}{(1 + |x|^2 + |y|^2)^2}\begin{bmatrix}
+            1 + |y|^2 & -\overline{x} y \\
+            -x \overline{y} & 1 + |x|^2
+        \end{bmatrix}. \]
+        For a tangent vector \(\partial = a \partial_x + b \partial_y\), its norm squared is
+        \[ \|\partial\|_{h_{\text{FS}}}^2 = \frac{(1 + |y|^2)|a|^2 + (1 + |x|^2)|b|^2 - 2 \Real(\overline{x} y a \overline{b})}{(1 + |x|^2 + |y|^2)^2} = \frac{|a|^2 + |b|^2 + |x b - y a|^2}{(1 + |x|^2 + |y|^2)^2} \geq 0. \]
+        % \Yang{To be continued.}
+    \end{example}
+
+    \begin{definition}\label{def:connection_on_holomorphic_vector_bundles}
+        Let \(X\) be a complex manifold and \(\calE \to X\) a holomorphic vector bundle.
+        A \emph{connection} on \(\calE\) is a \(\mathbb{C}\)-linear map
+        \[\nabla: \Gamma(X, \calE) \to \Gamma(X, T^*X \otimes \calE)\]
+        satisfying the Leibniz rule:
+        \[\nabla(fs) = df \otimes s + f \nabla s\]
+        for all smooth functions \(f\) on \(X\) and sections \(s\) of \(E\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{example}\label{eg:connection_on_P^n}
+        Let \(\mathbb{P}^n\) be the complex projective space and \(\mathcal{O}_{\mathbb{P}^n}(1)\) the hyperplane line bundle.
+        The \emph{Chern connection} associated with the Fubini-Study metric on \(\mathcal{O}_{\mathbb{P}^n}(1)\) is a connection defined as follows:
+        For a section \(s\) of \(\mathcal{O}_{\mathbb{P}^n}(1)\), we define
+        \[\nabla s = ds + \alpha s,\]
+        where \(\alpha\) is a (1,0)-form determined by the Fubini-Study metric.
+        \Yang{To be continued.}
+    \end{example}
+
+    \begin{proposition}\label{prop:unique_compatible_connection_on_hermitian_vector_bundle}
+        Let \(X\) be a complex manifold, \(E \to X\) a holomorphic vector bundle equipped with a Hermitian metric \(h\).
+        Then there exists a unique connection \(\nabla\) on \(E\) that is compatible with both the holomorphic structure and the Hermitian metric \(h\).
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{definition}\label{def:curvature_of_connection}
+        Let \(X\) be a complex manifold, \(E \to X\) a holomorphic vector bundle, and \(\nabla\) a connection on \(E\).
+        The \emph{curvature} of the connection \(\nabla\) is defined as the \(\mathcal{O}_X\)-linear map
+        \[F_\nabla: \Gamma(X, E) \to \Gamma(X, \Lambda^2 T^*X \otimes E)\]
+        given by
+        \[F_\nabla(s) = \nabla^2 s = \nabla(\nabla s)\]
+        for all sections \(s\) of \(E\).
+        \Yang{To be continued.}
+    \end{definition}
+
+
+\subsection{Chern-Weil Theory}
+
+    \begin{theorem}\label{thm:Chern-Weil_theorem}
+        Let \(X\) be a complex manifold and \(E \to X\) a holomorphic vector bundle equipped with a Hermitian metric \(h\).
+        Let \(\nabla\) be the unique connection on \(E\) compatible with both the holomorphic structure and the Hermitian metric \(h\), and let \(F_\nabla\) be its curvature.
+        Then the Chern classes \(c_k(E) \in H^{2k}(X, \mathbb{R})\) can be represented by the differential forms
+        \[c_k(E) = \left[\frac{1}{(2\pi i)^k} \mathrm{Tr} \left( F_\nabla^k \right) \right].\]
+        \Yang{To be checked.}
+    \end{theorem}
+
+
+\subsection{the K\"ahler condition}
+
+    \begin{definition}\label{def:Kahler_manifold}
+        A \emph{K\"ahler manifold} is a complex manifold \(X\) equipped with a Hermitian metric \(h\) whose associated (1,1)-form \(\omega\) is closed, i.e., \(d\omega = 0\).
+        \Yang{To be checked.}
+    \end{definition}
