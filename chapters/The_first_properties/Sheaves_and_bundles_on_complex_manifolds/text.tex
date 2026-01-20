@@ -87,5 +87,40 @@
 
 \subsection{Sheaves}
 
-    
 
+    \begin{construction}\label{cons:sheaf_of_sections_of_bundle}
+        Let \(M\) be a manifold and \(\pi: E \to M\) be a fiber bundle with fiber \(F\).
+        For each open subset \(U \subset M\), we can consider the set of "admissible" sections of \(E\) over \(U\):
+        \[ 
+            \Gamma(U,E) = \{ s: U \to E \mid \pi \circ s = \id_U, s \text{ is admissible} \}.
+        \]
+        Here ``admissible'' means continuous, smooth, holomorphic, etc., depending on the context.
+        The assignment \(U \mapsto \Gamma(U,E)\) defines a sheaf of sets (or groups, modules, etc. if \(F\) has additional structure) on \(M\), called the \emph{sheaf of sections} of the bundle \(E\).
+    \end{construction}
+
+    \begin{example}\label{eg:tangent_and_cotangent_bundle_as_sheaves}
+        Let \(M\) be a complex manifold.
+        We explain how to view the tangent bundle \(TM\) and the cotangent bundle \(T^*M\) as sheaves.
+        There are two important classes of admissible sections of these bundles, namely holomorphic and smooth sections.
+        We denote the sheaf of holomorphic (respectively smooth) sections of \(TM\) by \(\calT_{M,\hol}\) (respectively \(\calT_{M,\sm}\)).
+
+        Correspondingly, we denote the sheaf of holomorphic (respectively smooth) sections of \(T^*M\) by \(\Omega_{M,\hol}^1\) (respectively \(\Omega_{M,\sm}^1\)).
+        Sometime we omit the subscript \(M\) if there is no confusion.
+
+        
+        The elements in \(\calT_{M,\hol}(U)\) (respectively \(\calT_{M,\sm}(U)\)) are holomorphic (respectively smooth) vector fields on \(U\),
+        and holomorphic (respectively smooth) \(1\)-forms on \(U\) for \(\Omega_{M,\hol}^1(U)\) (respectively \(\Omega_{M,\sm}^1(U)\)).
+        As sheaves, we have 
+        \[ \Omega_{M,\hol}^1 \cong \calHom_{\calO_M}(\calT_{M,\hol}, \calO_M) \quad \text{and} \quad \Omega_{M,\sm}^1 \cong \calHom_{\calC_M^\infty}(\calT_{M,\sm}, \calC_M^\infty), \]
+        where \(\calC_M^\infty\) is the sheaf of smooth complex-valued functions on \(M\).
+    \end{example}
+
+
+    % \Yang{To be checked.}
+    For \(T^*M^\bbC := T^*M \otimes_\bbR \bbC\), this is also a holomorphic complex vector bundle over \(M\).
+    Hence we have the sheaf of holomorphic sections \(\Omega_{M,\hol}^\bbC\).
+    However, in general \(T^*M^{0,1}\) is not a holomorphic bundle since its transition functions are given by the complex conjugates of those of \(T^*M^{1,0} \cong T^*M\).
+    Hence for the decomposition \(T^*M^\bbC = T^*M^{1,0} \oplus T^*M^{0,1}\), we only have the decomposition of sheaves of smooth sections
+    \[ \Omega_{\sm}^{1,\bbC} \cong \Omega_{\sm}^{1,0} \oplus \Omega_{\sm}^{0,1} \cong \Omega_{\sm}^1 \oplus \overline{\Omega_{\sm}^1}. \]
+
+    
