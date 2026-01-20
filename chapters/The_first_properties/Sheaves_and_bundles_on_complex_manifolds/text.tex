@@ -71,6 +71,34 @@
         Then the set of isomorphism classes of fiber bundles over \(M\) with fiber \(F\) and structure group \(G\) is in one-to-one correspondence with the \v{C}ech cohomology set \(\check{H}^1(M,\calG)\).
     \end{theorem}
 
+    \begin{remark}\label{rmk:Cech_cohomology_for_sheaves_of_groups}
+        Let us clarify the meaning of \(\check{H}^1(M,\calG)\) when \(\calG\) is a sheaf of (not necessarily abelian) groups.
+        Given an open covering \(\calU = \{U_i\}\) of \(M\), we have a ``complex'' of groups
+        \[
+            \prod_i \calG(U_i) \xrightarrow{\delta^0} \prod_{i,j} \calG(U_i \cap U_j) \xrightarrow{\delta^1} \prod_{i,j,k} \calG(U_i \cap U_j \cap U_k),
+        \]
+        where the maps \(\delta^0\) and \(\delta^1\) are defined by
+        \[
+            \delta^0((g_i)_i) = (g_i|_{U_i \cap U_j} \cdot (g_j|_{U_i \cap U_j})^{-1})_{i,j},
+        \]
+        \[
+            \delta^1((g_{ij})_{i,j}) = (g_{ij}|_{U_i \cap U_j \cap U_k} \cdot g_{jk}|_{U_i \cap U_j \cap U_k} \cdot (g_{ik}|_{U_i \cap U_j \cap U_k})^{-1})_{i,j,k}.
+        \]
+        Note that \(\delta^1 \circ \delta^0\) is the constant map to the identity element.
+        We define
+        \begin{itemize}
+            \item the set of \(1\)-cocycles \(Z^1(\calU,\calG) = \ker(\delta^1)\),
+            \item the set of \(1\)-coboundaries \(B^1(\calU,\calG) = \im(\delta^0)\).
+            
+        \end{itemize}
+        The set \(\check{H}^1(\calU,\calG) = Z^1(\calU,\calG) / B^1(\calU,\calG)\) is defined as the set of orbits of the action of \(\prod_i \calG(U_i)\) on \(Z^1(\calU,\calG)\) given by
+        \[
+            ( (g_i)_i , (g_{ij})_{i,j} ) \mapsto ( g_i|_{U_i \cap U_j} \cdot g_{ij} \cdot (g_j|_{U_i \cap U_j})^{-1} )_{i,j}.
+        \]
+        Finally, we define \(\check{H}^1(M,\calG) = \varinjlim_{\calU} \check{H}^1(\calU,\calG)\) where the limit is taken over all open coverings of \(M\).
+        \Yang{To be revised.}
+    \end{remark}
+
     For example, if \(F = \bbC\) and \(G = \GL_1(\bbC) = \bbC^*\), consider the holomorphic line bundles over a complex manifold \(M\).
     The sheaf \(\calG\) is equal to \(\calO_M^*\), the sheaf of nowhere vanishing holomorphic functions on \(M\).
     Therefore, by \cref{thm:classification_fiber_bundle_by_sheaves_cohomology}, we get the classic result \(\Pic(M) \cong \check{H}^1(M, \calO_M^*)\).
@@ -115,12 +143,26 @@
         where \(\calC_M^\infty\) is the sheaf of smooth complex-valued functions on \(M\).
     \end{example}
 
+    \begin{example}\label{eg:real_trivial_bundle_C_as_sheaves}
+        Let \(M\) be a complex manifold.
+        Consider the trivial real vector bundle \(\bbC \times M \to M\).
+        Its sheaf of holomorphic sections is just the structure sheaf \(\calO_M\),
+        while its sheaf of smooth sections is the sheaf \(\calC_M^\infty = \calC_M^\infty(-,\bbC)\) of smooth complex-valued functions on \(M\).
+        Similarly, we have the trivial real vector bundle \(\bbR \times M \to M\) whose sheaf of smooth sections is \(\calC_M^\infty(-,\bbR)\).
 
-    % \Yang{To be checked.}
-    For \(T^*M^\bbC := T^*M \otimes_\bbR \bbC\), this is also a holomorphic complex vector bundle over \(M\).
-    Hence we have the sheaf of holomorphic sections \(\Omega_{M,\hol}^\bbC\).
-    However, in general \(T^*M^{0,1}\) is not a holomorphic bundle since its transition functions are given by the complex conjugates of those of \(T^*M^{1,0} \cong T^*M\).
-    Hence for the decomposition \(T^*M^\bbC = T^*M^{1,0} \oplus T^*M^{0,1}\), we only have the decomposition of sheaves of smooth sections
+        Hence, the complexification of a holomorphic vector bundle \(E\) over \(M\), i.e. the fiber bundle \(E^\bbC := E \otimes_\bbR \bbC\),
+        has sheaf of smooth sections given by \(\calE^\bbC := \calE_\sm \otimes_{\calC_M^\infty(-,\bbR)} \calC_M^\infty(-,\bbC) \cong \calE_\sm \oplus \overline{\calE_\sm}\),
+        where \(\calE_\sm\) is the sheaf of smooth sections of \(E\) and \(\overline{\calE_\sm}\) is its complex conjugate sheaf, i.e. \(\overline{\calE_\sm}(U) = \{ \overline{s} \mid s \in \calE_\sm(U) \}\).
+        These sheaves are \(\calC_M^\infty\)-modules.
+        \Yang{Note that the action of \(\calC_M^\infty\) on \(\overline{\calE_\sm}\) is given by}
+        \[ (f, v) \mapsto \overline{f} \cdot v, \quad \forall f \in \calC_M^\infty(U), v \in \overline{\calE_\sm}(U). \]
+    \end{example}
+
+    Let us return to the cotangent bundle \(T^*M\) of a complex manifold \(M\).
+    By the almost complex structure on \(M\), we have the decomposition of complexified cotangent bundle
+    \[ T^*M^\bbC := T^*M \otimes_\bbR \bbC \cong T^*M^{1,0} \oplus T^*M^{0,1}, \]
+    This gives a decomposition of sheaves of smooth sections
     \[ \Omega_{\sm}^{1,\bbC} \cong \Omega_{\sm}^{1,0} \oplus \Omega_{\sm}^{0,1} \cong \Omega_{\sm}^1 \oplus \overline{\Omega_{\sm}^1}. \]
+    
 
     
