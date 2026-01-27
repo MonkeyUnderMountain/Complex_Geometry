@@ -6,22 +6,23 @@
 
     Let \(X\) be a complex manifold and \(E \to X\) a holomorphic vector bundle. 
 
-    \begin{definition}\label{def:Hermitian_metric_on_holomorphic_vector_bundles}
-        A \emph{Hermitian metric} on \(E\) is a smoothly varying family of Hermitian inner products \(\langle \cdot, \cdot \rangle_x\) on the fibers \(E_x\) for each \(x \in X\),
+    \begin{definition}\label{def:hermitian_metric_on_holomorphic_vector_bundles}
+        A \emph{hermitian metric} on \(E\) is a smoothly varying family of hermitian inner products \(\langle \cdot, \cdot \rangle_x\) on the fibers \(E_x\) for each \(x \in X\),
         i.e., 
         \[\langle \cdot, \cdot \rangle_x: E_x \times E_x \to \mathbb{C}\]
-        is a Hermitian inner product for each \(x\), and for any local smooth sections \(s,t\) of \(E\), the function
+        is a hermitian inner product for each \(x\), and for any local smooth sections \(s,t\) of \(E\), the function
         \[x \mapsto \langle s(x), t(x) \rangle_x\]
         is smooth on \(X\).
+        A vector bundle equipped with a hermitian metric is called a \emph{hermitian vector bundle}.
         % \Yang{To be continued.}
     \end{definition}
 
     \begin{definition}\label{def:hermitian_metric_on_tangent_bundle}
-        A \emph{Hermitian metric} on a complex manifold \(X\) is a Hermitian metric on its holomorphic tangent bundle \(TX\).
+        A \emph{hermitian metric} on a complex manifold \(X\) is a hermitian metric on its holomorphic tangent bundle \(TX\).
     \end{definition}
 
     \begin{remark}\label{rmk:Riemannian_metric_induced_by_hermitian_metric}
-        Let \(h\) be a Hermitian metric on a complex manifold \(X\).
+        Let \(h\) be a hermitian metric on a complex manifold \(X\).
         Then \(h\) induces a Riemannian metric \(g\) on the underlying real manifold of \(X\) by
         \[g(u,v) = \Real(h(u,v))\]
         for real tangent vectors \(u,v \in T_x X\).
@@ -30,35 +31,60 @@
 
     \begin{example}\label{eg:Fubini-Study_metric_on_P^n}
         Let \(\bbP^n\) be the complex projective space.
-        The \emph{Fubini-Study metric} \(h_{\text{FS}}\) is a Hermitian metric on its tangent bundle \(T \bbP^n\) defined as follows.
+        The \emph{Fubini-Study metric} \(h_{\text{FS}}\) is a hermitian metric on its tangent bundle \(T \bbP^n\) constructed as follows.
+        Recall the \Yang{\(\bbP^n(\bbC) \cong S^{2n+1}/S^1\)} as real manifolds.
+
+
         On the standard affine chart \(U_i = \{[z_0: \cdots : z_n] \in \bbP^n \mid z_i \neq 0\}\) with coordinates \(z_{j,i} = z_j/z_i\) for \(j \neq i\), 
         we know that \(T\bbP^n|_{U_i}\) is spanned by \(\{\partial_{j,i} = \partial/\partial z_{j,i}\}_{j \neq i}\).
         The Fubini-Study metric is given by
-        \[h_{\text{FS}}(z_{-,i})(\partial_k, \partial_l) = \frac{\delta_{kl}}{(1 + \sum_{r \neq i} |z_{r,i}|^2)} - \frac{\overline{z_{k,i}} z_{l,i}}{(1 + \sum_{r \neq i} |z_{r,i}|^2)^2}.\]
+        \[h_{\text{FS}}(z_{-,i})(\partial_{k,i}, \partial_{l,i}) = \frac{\delta_{kl}}{(1 + \sum_{r \neq i} |z_{r,i}|^2)} - \frac{\overline{z_{k,i}} z_{l,i}}{(1 + \sum_{r \neq i} |z_{r,i}|^2)^2}.\]
 
         On \(U_{ij} = U_i \cap U_j\), the differential form transform as
         \[ \upd z_{k,i} = z_{j,i} \upd z_{k,j} - z_{k,i} z_{j,i} \upd z_{i,j}.\]
-        In the matrix form,
-        \[\begin{bmatrix}
-            \upd z_{1,i} \\
-            \vdots \\   
-            \upd z_{n,i}
-        \end{bmatrix} =
-        \begin{bmatrix}
-            z_{j,i} & 0 & \cdots & -z_{1,i} z_{j,i} & \cdots & 0 \\
-            0 & z_{j,i} & \cdots & -z_{2,i} z_{j,i} & \cdots & 0 \\
-            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
-            0 & 0 & \cdots & -z_{n,i} z_{j,i} & \cdots & z_{j,i}
-        \end{bmatrix}
-        \begin{bmatrix}
-            \upd z_{1,j} \\
-            \vdots \\   
-            \upd z_{n,j}
-        \end{bmatrix}.\]
+        It follows that
+        \[ \frac{\partial z_{k,i}}{\partial z_{l,j}} = \begin{cases}
+            z_{j,i}, & l = k,k \neq j, \\
+            -z_{k,i} z_{j,i}, & l = i, \\
+            0, & \text{otherwise}.
+        \end{cases}\]
+        Hence the tangent vectors transform as
+        \[\partial_{l,j} = \sum_{k \neq i} \frac{\partial z_{l,j}}{\partial z_{k,i}} \partial_{k,i} = \begin{cases}
+            z_{j,i} \partial_{l,i}, & l \neq i, \\
+            -\sum_{k \neq i} z_{k,i}z_{j,i} \partial_{k,i}, & l = i.
+        \end{cases} \]
 
-        hence the tangent vectors transform as
-        \[\partial_{k,i} = \frac{\partial}{\partial z_{k,i}} = z_{j,i} \partial_{k,j} \quad \text{for } k \neq j, \quad \text{and} \quad \]
-        
+
+
+        % In the matrix form,
+        % \[\begin{bmatrix}
+        %     \upd z_{0,i} \\
+        %     \vdots \\   
+        %     \upd z_{i-1,i} \\
+        %     \upd z_{i+1,i} \\
+        %     \vdots \\
+        %     \upd z_{j,i} \\
+        %     \vdots \\
+        %     \upd z_{n,i}
+        % \end{bmatrix} =
+        % \begin{bmatrix}
+        %     z_{j,i} & 0 & \cdots & \textcolor{cyan}{-z_{1,i} z_{j,i}} & \cdots & 0 \\
+        %     0 & z_{j,i} & \cdots & \textcolor{cyan}{-z_{2,i} z_{j,i}} & \cdots & 0 \\
+        %     \vdots & \vdots & \ddots & \textcolor{cyan}{\vdots} & \ddots & \vdots \\
+        %     0 & 0 & \cdots & \textcolor{cyan}{-1} & \cdots & 0 \\
+        %     \vdots & \vdots & \ddots & \textcolor{cyan}{\vdots} & \ddots & \vdots \\
+        %     0 & 0 & \cdots & \textcolor{cyan}{-z_{n,i} z_{j,i}} & \cdots & z_{j,i}
+        % \end{bmatrix}
+        % \begin{bmatrix}
+        %     \upd z_{0,j} \\
+        %     \vdots \\
+        %     \textcolor{cyan}{\upd z_{i,j}} \\
+        %     \vdots \\
+        %     \upd z_{j-1,j} \\
+        %     \upd z_{j+1,j} \\
+        %     \vdots \\   
+        %     \upd z_{n,j}
+        % \end{bmatrix}.\]        
         % tangent vectors transform as
         % \[\partial_{k,i} = \frac{\partial}{\partial (z_{k,j} z_{j,i})} = \frac{1}{z_{j,i}} \partial_{k,j} \]
         % One can check that the above definition is consistent on the overlaps \(U_{ij}\),
@@ -102,8 +128,8 @@
     \end{example}
 
     \begin{proposition}\label{prop:unique_compatible_connection_on_hermitian_vector_bundle}
-        Let \(X\) be a complex manifold, \(E \to X\) a holomorphic vector bundle equipped with a Hermitian metric \(h\).
-        Then there exists a unique connection \(\nabla\) on \(E\) that is compatible with both the holomorphic structure and the Hermitian metric \(h\).
+        Let \(X\) be a complex manifold, \(E \to X\) a holomorphic vector bundle equipped with a hermitian metric \(h\).
+        Then there exists a unique connection \(\nabla\) on \(E\) that is compatible with both the holomorphic structure and the hermitian metric \(h\).
         \Yang{To be checked.}
     \end{proposition}
 
@@ -130,8 +156,8 @@
 \subsection{Chern-Weil Theory}
 
     \begin{theorem}\label{thm:Chern-Weil_theorem}
-        Let \(X\) be a complex manifold and \(E \to X\) a holomorphic vector bundle equipped with a Hermitian metric \(h\).
-        Let \(\nabla\) be the unique connection on \(E\) compatible with both the holomorphic structure and the Hermitian metric \(h\), and let \(F_\nabla\) be its curvature.
+        Let \(X\) be a complex manifold and \(E \to X\) a holomorphic vector bundle equipped with a hermitian metric \(h\).
+        Let \(\nabla\) be the unique connection on \(E\) compatible with both the holomorphic structure and the hermitian metric \(h\), and let \(F_\nabla\) be its curvature.
         Then the Chern classes \(c_k(E) \in H^{2k}(X, \mathbb{R})\) can be represented by the differential forms
         \[c_k(E) = \left[\frac{1}{(2\pi i)^k} \mathrm{Tr} \left( F_\nabla^k \right) \right].\]
         \Yang{To be checked.}
@@ -144,6 +170,6 @@
 % \subsection{the K\"ahler condition}
 
 %     \begin{definition}\label{def:Kahler_manifold}
-%         A \emph{K\"ahler manifold} is a complex manifold \(X\) equipped with a Hermitian metric \(h\) whose associated (1,1)-form \(\omega\) is closed, i.e., \(d\omega = 0\).
+%         A \emph{K\"ahler manifold} is a complex manifold \(X\) equipped with a hermitian metric \(h\) whose associated (1,1)-form \(\omega\) is closed, i.e., \(d\omega = 0\).
 %         \Yang{To be checked.}
 %     \end{definition}
