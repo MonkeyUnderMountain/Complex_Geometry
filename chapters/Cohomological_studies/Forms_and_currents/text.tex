@@ -1,8 +1,10 @@
 \section{Forms and Currents}
 
+    Let \(M\) be a complex manifold of complex dimension \(d\).
+
+
 \subsection{Differential forms}
 
-    Let \(M\) be a complex manifold of complex dimension \(d\).
     Recall that we have the decomposition of the cotangent bundle:
     \[ \Omega_{\sm}^{1,\bbC} \cong \Omega_{\sm}^{1,0} \oplus \Omega_{\sm}^{0,1} \cong \Omega_{\sm}^1 \oplus \overline{\Omega_{\sm}^1}. \]
     Take exterior powers, we have\( \Omega_{\sm}^{k,\bbC} \cong \bigoplus_{p+q=k} \Omega_{\sm}^{p,q} \),
@@ -74,28 +76,44 @@
         \Yang{To be added.}
     \end{proof}
 
-    \Yang{The following need to checked.}
-    \paragraph{Topological vector space of forms with compact support}
-    Let \(M\) be a complex manifold of complex dimension \(d\).
-    Given a differential form \(\omega \in \calA^{k}(M)\) with compact support, for any compact subset \(K \subset M\) and non-negative integer \(m\), we can define a seminorm
-    \[ p_{K,m}(\omega) = \sup_{x \in K} \max_{|\alpha| \leq m} |D^{\alpha} \omega(x)|. \]
-    Here, \(\alpha = (\alpha_1, \ldots, \alpha_{2d})\) is a multi-index, and \(D^{\alpha} = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \cdots \partial x_{2d}^{\alpha_{2d}}}\) in local real coordinates \((x_1, \ldots, x_{2d})\).
-    The collection of these seminorms endows the space of compactly supported smooth \(k\)-forms on \(M\) with a locally convex topology.
+    % \Yang{The following need to checked.}
+    % \paragraph{Topological vector space of forms with compact support}
+    % Let \(M\) be a complex manifold of complex dimension \(d\).
+    \begin{construction}
+        % We denote by \(\calA_c^{k}(M)\) (resp. \(\calA_c^{p,q}(M)\)) the space of smooth complex-valued \(k\)-forms (resp. \((p,q)\)-forms) on \(M\) with compact support.
+        To define a topology on \(\calA^{k}(M)\), we use the collection of seminorms as follows.
+        Let \(U \subset M\) be a coordinate chart with local real coordinates \((x_1, \ldots, x_{2d})\).
+        Given \(\omega \in \calA^{k}(M)\), we can write \(\omega|_U\) as \(\omega|_U = \sum_I f_I d x_I\).
+        For any multi-index \(\alpha = (\alpha_1, \ldots, \alpha_{2d})\), we can define the partial derivative
+        \[ D^{\alpha} f = \frac{\partial^{|\alpha|} f}{\partial x_1^{\alpha_1} \cdots \partial x_{2d}^{\alpha_{2d}}}. \]
+        Then for any compact subset \(K \subset U\) and non-negative integer \(m\), we can define a seminorm on \(\calA^{k}(M)\) by
+        \[ p_{U, K, m}(\omega) = \sup_{x \in K} \max_{I} \max_{|\alpha| \leq m} |D^{\alpha} f_I(x)|, \]
+        where \(m\) is a non-negative integer.
 
-    \begin{definition}\label{def:forms_with_compact_support}
-        A differential form \(\omega \in \calA^{k}(M)\) is said to have \emph{compact support} if there exists a compact subset \(K \subset M\) such that \(\omega|_{M \setminus K} = 0\).
-        The space of smooth complex-valued \(k\)-forms with compact support on \(M\) is denoted by \(\calA^{k}_c(M)\) or \(\calD^{k}(M)\).
-        On this vector space, we give it the weak topology induced by the family of seminorms
-        \[ p_{K,m}(\omega) = \sup_{x \in K} \max_{|\alpha| \leq m} |D^{\alpha} \omega(x)|, \]
-        where \(K\) runs over all compact subsets of \(M\) and \(m\) runs over all non-negative integers.
-    \end{definition}
+        The topology on \(\calA^{k}(M)\) is defined to be the weakest topology such that all seminorms \(p_{U, K, m}\) are continuous, where \(U\) runs over all coordinate charts of \(M\), \(K\) runs over all compact subsets of \(U\), and \(m\) runs over all non-negative integers.
+    \end{construction}
+    
+    \begin{proposition}\label{prop:pullback_of_forms_is_continuous}
+        Let \(f: M \to N\) be a holomorphic map between complex manifolds.
+        Then the pull-back of differential forms \(f^*: \calA^{k}(N) \to \calA^{k}(M)\) is a continuous linear map with respect to the topologies defined above.
+        \Yang{To be checked}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:A^k_is_Fr\'echet_space}
+        The space \(\calA^{k}(M)\) equipped with the topology defined above is a Fr\'echet space,
+        i.e., a complete metrizable locally convex topological vector space.
+        \Yang{To be checked}
+    \end{proposition}
 
 
 \subsection{Currents}
 
+    We denote by \(\calA_c^{k}(M)\) (resp. \(\calA_c^{p,q}(M)\)) the space of smooth complex-valued \(k\)-forms (resp. \((p,q)\)-forms) on \(M\) with compact support.
+    It is also denoted by \(\calD^{k}(M)\).
+
     \begin{definition}\label{def:currents}
-        A \emph{current} of degree \(k\) on a complex manifold \(M\) is a continuous linear functional on the space of compactly supported smooth \((2d - k)\)-forms on \(M\):
-        \[ T: \calA^{2d - k}_c(M) \to \bbC. \]
-        The space of currents of degree \(k\) on \(M\) is denoted by \(\calD_k(M)\).
-        \Yang{To be revised.}
+        A \emph{current} of dimension \(k\) or degree \((2d - k)\) on \(M\) is a continuous linear functional
+        \[ T: \calD^k(M) \to \bbC. \]
+        We denote the space of currents of dimension \(k\) on \(M\) by \(\calD_k'(M)\) or \(\calD'^{2d-k}(M)\).
+        % \Yang{To be revised.}
     \end{definition}
