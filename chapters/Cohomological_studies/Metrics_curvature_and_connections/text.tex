@@ -102,6 +102,20 @@
         \[ \|\partial\|_{h_{\text{FS}}}^2 = \frac{(1 + |y|^2)|a|^2 + (1 + |x|^2)|b|^2 - 2 \Real(\overline{x} y a \overline{b})}{(1 + |x|^2 + |y|^2)^2} = \frac{|a|^2 + |b|^2 + |x b - y a|^2}{(1 + |x|^2 + |y|^2)^2} \geq 0. \]
     \end{example}
 
+    \begin{example}\label{eg:Fubini-Study_metric_on_O_1}
+        Let \(\bbP^n\) be the complex projective space in the sense of Grothendieck, i.e., the set of hyperplanes in \(\bbC^{n+1}\) and \(L \to \bbP^n\) be the geometric line bundle corresponding to \(\calO_{\bbP^n}(1)\).
+        On \(L\), there is another ``Fubini-Study'' hermitian metric \(h_{\text{FS}}\) defined as follows.
+        Fix a hermitian metric \(\langle \cdot, \cdot \rangle\) on \(\bbC^{n+1}\).
+        For a point \(x \in \bbP^n\) represented by a linear functional \(f_x: \bbC^{n+1} \to \bbC\), the fiber \(L_x\) can be identified with \(\bbC^{n+1}/\ker(f_x) \cong \bbC\).
+        There is a canonical isomorphism \(\bbC^{n+1}/\ker(f_x) \cong (\ker f_x)^\perp\) induced by the given hermitian metric on \(\bbC^{n+1}\).
+        Hence on \(L_x\), we can define a hermitian metric by pulling back the restriction of \(\langle \cdot, \cdot \rangle\) on \((\ker f_x)^\perp\).
+        
+        Concretely, Let us take the standard hermitian metric on \(\bbC^{n+1}\).
+        On the standard affine chart \(U_i = \{[z_0: \cdots : z_n] \in \bbP^n \mid z_i \neq 0\}\) with coordinates \(z_{j,i} = z_j/z_i\) for \(j \neq i\),
+        a local holomorphic frame of \(L\) is given by
+        \[s_i([z_0: \cdots : z_n]) = (z_0, \ldots, z_{i-1}, 1, z_{i+1}, \ldots, z_n) \in L_{[z_0: \cdots : z_n]}.\]
+    \end{example}
+
     \begin{definition}\label{def:connection_on_holomorphic_vector_bundles}
         Let \(X\) be a complex manifold and \(E \to X\) a holomorphic vector bundle.
         A \emph{connection} on \(E\) is a \(\bbC\)-linear map between the sheaves of smooth sections
